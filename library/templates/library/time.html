@@ -1,0 +1,8 @@
+{% extends "library/base.html" %}
+
+{% block title %}La fecha actual{% endblock %}
+
+{% block content %}
+<!-- date_now devuelve el resultado de la funcion date en views, date:"j F Y formatea la fecha en dia mes y año" -->
+ <p>Hoy es: {{ date_now | date:"j F Y"}}</p>
+{% endblock %}

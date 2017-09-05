@@ -1,0 +1,15 @@
+<html>
+<head>
+    <!-- pagina base, las demas paginas usan esta como base gracias a extends "library/base.html"-->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <h1>Mi sitio Web en Django</h1>
+    {% block content %}{% endblock %}
+
+    {% block footer %}
+    <hr>
+    <p>Gracias por visitar nuestro sitio web.</p>
+    {% endblock %}
+</body>
+</html>
