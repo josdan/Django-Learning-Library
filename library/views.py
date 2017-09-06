@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.core.mail import send_mail
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils import timezone
 import datetime
 from . models import Libro
@@ -37,14 +38,37 @@ def browser(request):
 
 
 def buscar(request):
-    error = False
+    errors = []
     if 'q' in request.GET:
         q = request.GET['q']
         if not q:
-            error = True
+            errors.append('Por favor introduce un termino de busqueda.')
+        elif len(q) > 20:
+            errors.append('Por favor introduce un termino de busqueda menor a 20 caracteres.')
         else:
             libros = Libro.objects.filter(titulo__icontains=q)
             return render(request, 'library/resultados.html',
                 {'libros': libros, 'query': q})
     return render(request, 'library/formulario_buscar.html',
-        {'error': error})
+                  {'errors': errors})
+
+
+def contactos(request):
+    errors = []
+    if request.method == 'POST':
+        if not request.POST.get('asunto', ''):
+            errors.append('Por favor introduce el  asunto.')
+        if not request.POST.get('mensaje', ''):
+            errors.append('Por favor introduce un mensaje.')
+        if request.POST.get('email') and '@' not in request.POST['email']:
+            errors.append('Por favor introduce una direccion de e-mail valida.')
+        if not errors:
+            send_mail(
+                request.POST['asunto'],
+                request.POST['mensaje'],
+                request.POST.get('email', 'noreply@example.com'),
+                ['siteowner@example.com'],
+            )
+            return HttpResponseRedirect('/contactos/gracias/')
+    return render(request, 'library/formulario_contactos.html',
+        {'errors': errors})

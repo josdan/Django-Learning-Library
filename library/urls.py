@@ -22,5 +22,6 @@ urlpatterns = [
     #añade la ruta buscar, para cuando pulsemos en buscar dentro de formulario_buscar
     url(r'^buscar/$', views.buscar),
 
-
+    #añade la ruta formularios_contactos, es un formulario y envia un mail
+    url(r'^contactos/$', views.contactos),
 ]

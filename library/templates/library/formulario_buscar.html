@@ -3,8 +3,12 @@
     <title>Buscar</title>
 </head>
 <body>
-    {% if error %}
-        <p style="color: red;">Por favor introduce un termino de busqueda.</p>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+            <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
     <form action="" method="get">
