@@ -1,0 +1,10 @@
+{% if libros %}
+<p>Se han encontrado {{ libros|length }} libro{{ libros|pluralize }} por tu criterio de busqueda <strong>{{ query }}</strong></p>
+    <ul>
+        {% for libros in libros %}
+        <li>{{ libros.titulo }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Ningun libro coincide con tu criterio de busqueda <strong>{{ query }}</strong>.</p>
+{% endif %}
