@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils import timezone
 import datetime
 from . models import Libro
+from . forms import FormularioContactos
 
 
 def root(request):
@@ -54,21 +55,17 @@ def buscar(request):
 
 
 def contactos(request):
-    errors = []
     if request.method == 'POST':
-        if not request.POST.get('asunto', ''):
-            errors.append('Por favor introduce el  asunto.')
-        if not request.POST.get('mensaje', ''):
-            errors.append('Por favor introduce un mensaje.')
-        if request.POST.get('email') and '@' not in request.POST['email']:
-            errors.append('Por favor introduce una direccion de e-mail valida.')
-        if not errors:
+        form = FormularioContactos(request.POST)
+        if form.is_valid():
+            datos = form.cleaned_data
             send_mail(
-                request.POST['asunto'],
-                request.POST['mensaje'],
-                request.POST.get('email', 'noreply@example.com'),
+                datos['asunto'],
+                datos['mensaje'],
+                datos.get('email', 'noreply@example.com'),
                 ['siteowner@example.com'],
             )
             return HttpResponseRedirect('/contactos/gracias/')
-    return render(request, 'library/formulario_contactos.html',
-        {'errors': errors})
+    else:
+        form = FormularioContactos(initial={'asunto': 'Escribe un titulo'})
+    return render(request, 'library/formulario_contactos.html', {'form': form})

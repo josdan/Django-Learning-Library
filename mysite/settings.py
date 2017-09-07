@@ -125,3 +125,5 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = 'media/'
 
 MEDIA_URL = 'http://localhost:8000/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
