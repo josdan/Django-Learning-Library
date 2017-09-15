@@ -1,6 +1,9 @@
 {% extends "library/base.html" %}
 
-{% block title %}{% trans 'Hello World' %}{% endblock %}
+{% block title %}
+{% load i18n %}
+ <h1>{% trans 'Hello World' %}</h1>
+{% endblock %}
 
 {% block content %}
  <p> {{ hello_world }} </p>

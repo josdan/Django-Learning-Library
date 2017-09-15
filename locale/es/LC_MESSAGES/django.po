@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-15 09:57+0200\n"
-"PO-Revision-Date: 2017-09-15 09:59-0015\n"
+"POT-Creation-Date: 2017-09-15 10:31+0200\n"
+"PO-Revision-Date: 2017-09-15 10:32-0015\n"
 "Last-Translator: b'  <josdan5555@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -30,6 +30,10 @@ msgstr "Mi sitio web en Django"
 #: library/templates/library/base.html:13
 msgid "Thank you for visiting our website."
 msgstr "Gracias por visitar nuestra página web."
+
+#: library/templates/library/hello.html:5
+msgid "Hello World"
+msgstr "Hola Mundo"
 
 #: library/templates/library/start.html:5
 msgid "Log in"
