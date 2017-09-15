@@ -4,12 +4,13 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <h1>Mi sitio Web en Django</h1>
+    {% load i18n %}
+    <h1>{% trans 'My website on Django' %}</h1>
     {% block content %}{% endblock %}
 
     {% block footer %}
     <hr>
-    <p>Gracias por visitar nuestro sitio web.</p>
+    <p>{% trans 'Thank you for visiting our website.' %}</p>
     {% endblock %}
 </body>
 </html>

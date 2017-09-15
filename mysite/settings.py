@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for mysite project.
 
@@ -31,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rosetta',
     'library.apps.LibraryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -115,6 +118,30 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+from django.utils.translation import ugettext_lazy as _
+# The LocaleMiddleware check's the incoming request for the
+# user's preferred language settings. Add the LocaleMiddleware
+# after SessionMiddleware and CacheMiddleware, and before the
+# CommonMiddleware.
+
+# MIDDLEWARE_CLASSES = (
+#    'django.contrib.sessions.middleware.SessionMiddleware',
+#    'django.middleware.locale.LocaleMiddleware',
+#    'django.middleware.common.CommonMiddleware',
+# )
+
+# Provide a lists of languages which your site supports.
+LANGUAGES = (
+    ('en', _('English')),
+    ('es', _('Spanish')),
+)
+# Set the default language for your site.
+LANGUAGE_CODE = 'en'
+# Tell Django where the project's translation files should be.
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 
 # Static files (CSS, JavaScript, Images)

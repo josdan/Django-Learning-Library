@@ -3,8 +3,9 @@ from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils import timezone
 import datetime
-from . models import Libro
+from . models import Libro, Editor
 from . forms import FormularioContactos
+from django.views.generic import TemplateView
 
 
 def root(request):
@@ -15,6 +16,9 @@ def hello(request):
     """funcion hello que muestra hello world"""
     hello = ("Hello World")
     return render(request, 'library/hello.html', {'hello_world': hello})
+
+class Start(TemplateView):
+    template_name = 'library/start.html'
 
 def date(request):
     """funcion que devuelve la fecha y hora"""
@@ -69,3 +73,12 @@ def contactos(request):
     else:
         form = FormularioContactos(initial={'asunto': 'Escribe un titulo'})
     return render(request, 'library/formulario_contactos.html', {'form': form})
+
+def lista_libros(request):
+    lista_libros = Libro.objects.all()
+    return render(request, 'library/lista_libros.html', {'lista_libros': lista_libros})
+
+
+def lista_editores(request):
+    lista_editores = Editor.objects.all()
+    return render(request, 'library/lista_editores.html', {'lista_editores': lista_editores})

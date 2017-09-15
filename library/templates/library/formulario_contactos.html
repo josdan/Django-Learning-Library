@@ -22,14 +22,14 @@
 
     {% if form.errors %}
         <p style="color: red;">
-            Por favor corrige lo siguiente:
+            Please correct the following:
         </p>
     {% endif %}
 
     <form action="" method="post">{% csrf_token %}
         <div class="field">
             {{ form.asunto.errors }}
-            <label for="id_asunto">Asunto:</label>
+            <label for="id_asunto">Subject:</label>
             {{ form.asunto }}
         </div>
         <div class="field">
@@ -39,7 +39,7 @@
         </div>
         <div class="field">
             {{ form.mensaje.errors }}
-            <label for="id_mensaje">Mensaje:</label>
+            <label for="id_mensaje">Message:</label>
             {{ form.mensaje }}
         </div>
         <input type="submit" value="Enviar">

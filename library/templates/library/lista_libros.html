@@ -1,0 +1,19 @@
+{% extends 'library/base.html' %}
+
+<html>
+
+	<body>
+		{% block content %}
+			{% for libro in lista_libros %}
+			    <div class="libro">
+                            	<div class="date">
+                                <p>{{ libro.fecha_publicacion }}</p>
+                            	</div>
+                            {{ libro.titulo|linebreaksbr }}
+                            {{ libro.autores|linebreaksbr }}
+                            {{ libro.editor|linebreaksbr }}
+                </div>
+			{% endfor %}
+   		 {% endblock content %}	
+	</body>
+</html>

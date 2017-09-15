@@ -22,9 +22,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('library.urls')),
 
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
-
-
+    url(r'^rosetta/', include('rosetta.urls')),
 ]
 
 

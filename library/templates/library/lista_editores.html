@@ -1,0 +1,21 @@
+{% extends 'library/base.html' %}
+
+<html>
+
+	<body>
+		{% block content %}
+			{% for editor in lista_editores %}
+			    <div class="editor">
+                            	<div class="editor">
+									<p>Nombre: {{ editor.nombre }}</p>
+                            	</div>
+                            Domicilio: {{ editor.domicilio|linebreaksbr }}
+                            Ciudad: {{ editor.ciudad|linebreaksbr }}
+							Estado: {{ editor.estado|linebreaksbr }}
+							Pais: {{ editor.pais|linebreaksbr }}
+							Web: {{ editor.website|linebreaksbr }}
+                </div>
+			{% endfor %}
+   		 {% endblock content %}	
+	</body>
+</html>
